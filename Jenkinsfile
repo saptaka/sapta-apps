@@ -5,7 +5,7 @@ pipeline {
         stage('Build image') {
             steps {
                 deff app = docker.build("gcr.io/sapta-cyber","restapi:v")
-                app.push()
+                app.push("v1")
             }
         }
     }
