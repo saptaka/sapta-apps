@@ -4,10 +4,10 @@ pipeline {
     stages {
         
         stage('Build image') {
-            app = docker.build("[id-of-your-project-as-in-google-url]/[name-of-the-artifact]")
+            app = docker.build("gcr.io/sapta-cyber","restapi:v")
         }
         stage('Push image') {
-            docker.withRegistry('https://gcr.io', 'gcr:[cluster-id]') {
+            docker.withRegistry('gcr.io/sapta-cyber/restapi:v1') {
                 app.push("${env.BUILD_NUMBER}")
                 app.push("latest")
             }
